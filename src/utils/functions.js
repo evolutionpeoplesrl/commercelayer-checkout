@@ -72,3 +72,65 @@ export const clearPaymentScripts = () => {
     el.parentNode.removeChild(el)
   })
 }
+
+// used to get ip by calling remote server
+export const getJSONP = (url, success) => {
+  let ud = '_' + +new Date()
+  let script = document.createElement('script')
+  let head = document.getElementsByTagName('head')[ 0 ] || document.documentElement
+
+  window[ ud ] = function (data) {
+    head.removeChild(script)
+    success && success(data)
+  }
+
+  script.src = url.replace('callback=?', 'callback=' + ud)
+  head.appendChild(script)
+}
+
+// retrieve client IP by calling jsonip.com service
+export const getClientIP = () => {
+  return new Promise((resolve, reject) => getJSONP('https://jsonip.com/?callback=?', data => resolve(data.hasOwnProperty('ip') ? data.ip : 'unknown')))
+}
+
+// send purchase event to facebook api
+export const sendPurchaseEventToFacebookAPI = () => {
+  getClientIP().then(result => {
+    const ip = result
+    const orderAmount = Number(document.getElementById('order-summary-total-amount').textContent.replace(/[^0-9,-]+/g, '').replace(',', '.'))
+
+    let myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+    const raw = JSON.stringify({
+      'data': [
+        {
+          'event_name': 'Purchase',
+          'event_time': Math.floor(+new Date() / 1000),
+          'action_source': 'website',
+          'event_source_url': window.location.href,
+          'user_data': {
+            'client_ip_address': ip,
+            'client_user_agent': window.navigator.userAgent
+          },
+          'custom_data': {
+            'currency': 'EUR',
+            'value': orderAmount
+          }
+        }
+      ]
+    })
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    }
+
+    fetch('https://graph.facebook.com/v12.0/369407189935534/events?access_token=EAAVny3PwrEYBAFag7yZA4LNCwBXNfyukAAZBrJZCdy0yCc7bPGUZCLGb9pz4MDBZCz8pZB2oJFl3aZCei9ga6TmVwZBVoJ2HSLmUxmZAUNA2aqZB4Y3vXOPmsYubRUe4da91C4OppRWE4VtSocPtwhCenfqlNWlftrYTyw0RLaKBuzg6JrKqgciT5uhiRuPyTvNBoZD', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  })
+}
