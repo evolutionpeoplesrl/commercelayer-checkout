@@ -84,15 +84,11 @@ export default {
   },
   metaInfo: {
     title: 'Order confirmation'
+  },
+  mounted () {
+    gtag_report_conversion()
   }
-// eslint-disable-next-line func-call-spacing
 }
-
-// eslint-disable-next-line no-unexpected-multiline
-(function () {
-  gtag_report_conversion();
-})()
-
 </script>
 
 <style lang="scss" scoped>
