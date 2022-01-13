@@ -18,7 +18,6 @@
         color="primary"
         :block="isMobile"
         :disabled="disabled"
-        @click="submit()"
         min-width="50%"
         id="payment-step-submit"
         :loading="buttons.loading_payment"
@@ -121,11 +120,6 @@ export default {
       'order.payment_method',
       'selected_payment_option_component'
     ])
-  },
-  methods: {
-    submit () {
-      gtag_report_conversion()
-    }
   }
 }
 </script>

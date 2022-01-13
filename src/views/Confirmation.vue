@@ -84,6 +84,9 @@ export default {
   },
   metaInfo: {
     title: 'Order confirmation'
+  },
+  mounted () {
+    gtag_report_conversion(window.location.href)
   }
 }
 </script>
