@@ -32,6 +32,7 @@ export default {
     },
     handlePaymentSourceError (error) {
       let scalapayError = document.getElementById('scalapay-payment-error')
+      console.log(error)
       scalapayError.innerHTML = error.data.errors[0].detail
       this.loading_payment = false
     },
