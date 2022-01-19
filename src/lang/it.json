@@ -68,7 +68,7 @@
     },
     "scalapay": {
       "title": "scalapay",
-      "hint": "confermando l'ordine, verrai rimandato sul sito di Scalapay per effettuare l'accesso e autorizzare il pagamento"
+      "hint": "Se compri con Scalapay ricevi il tuo ordine subito e paghi in 3 rate. Prendi atto che le rate verranno cedute a Incremento SPV S.r.l., a soggetti correlati e ai loro cessionari, e che autorizzi tale cessione"
     },
     "stripe": {
       "title": "carta di credito"

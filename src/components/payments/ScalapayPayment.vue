@@ -21,7 +21,6 @@ export default {
   methods: {
     paymentSourceAttributes () {
       return {
-        return_url: window.location.href + '/scalapay',
         cancel_url: window.location.href
       }
     },
