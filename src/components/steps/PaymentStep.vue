@@ -54,6 +54,7 @@ export default {
     BraintreeCard,
     StripeCard,
     PaypalPayment,
+    ScalapayPayment,
     WireTransfer
   },
   mixins: [stepMixin],
