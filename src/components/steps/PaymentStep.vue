@@ -45,6 +45,7 @@ import AdyenCard from '@/components/payments/adyen/AdyenCard'
 import BraintreeCard from '@/components/payments/braintree/BraintreeCard'
 import StripeCard from '@/components/payments/stripe/StripeCard'
 import PaypalPayment from '@/components/payments/PaypalPayment'
+import ScalapayPayment from '@/components/payments/ScalapayPayment'
 import WireTransfer from '@/components/payments/WireTransfer'
 
 export default {
@@ -100,6 +101,13 @@ export default {
             paymentOptions.push({
               payment_method: paymentMethod,
               component: 'PaypalPayment',
+              priority: 2
+            })
+            break
+          case 'external_payments':
+            paymentOptions.push({
+              payment_method: paymentMethod,
+              component: 'ScalapayPayment',
               priority: 2
             })
             break
