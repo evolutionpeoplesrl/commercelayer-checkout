@@ -21,7 +21,7 @@ export default {
   methods: {
     paymentSourceAttributes () {
       return {
-        cancel_url: window.location.href
+        payment_source_token: '0123456789'
       }
     },
     setupPayment () {
