@@ -16,6 +16,7 @@
 
 <script>
 import { paymentMixin } from '@/mixins/paymentMixin'
+import { scalapayOrderInit } from '@/services/APIService'
 export default {
   mixins: [paymentMixin],
   methods: {
@@ -38,7 +39,10 @@ export default {
     },
     handlePayment () {
       this.loading_payment = true
-      console.log(this.order.payment_source)
+      console.log(this.order)
+      scalapayOrderInit(this.order)
+        .then(response => console.log(response))
+        .catch(error => console.error(error))
       // window.location = this.order.payment_source.approval_url
     }
   }

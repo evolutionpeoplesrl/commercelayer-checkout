@@ -458,6 +458,20 @@ const placeOrder = order => {
     })
 }
 
+// -- Scalapay --
+const scalapayBackendBaseURL = 'https://scalapay.fas-rocca.agenziadigital.it/api/v1'
+
+const scalapayOrderInit = orderData => {
+  return apiClient
+    .post(scalapayBackendBaseURL + '/order', orderData)
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      return Promise.reject(error.response)
+    })
+}
+
 export default {
   handleCustomerSubscription,
   getOrder,
@@ -469,5 +483,6 @@ export default {
   updateOrderPaymentMethod,
   createOrderPaymentSource,
   updateOrderPaymentSource,
-  placeOrder
+  placeOrder,
+  scalapayOrderInit
 }
