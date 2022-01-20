@@ -16,7 +16,7 @@
 
 <script>
 import { paymentMixin } from '@/mixins/paymentMixin'
-import { scalapayOrderInit } from '@/services/APIService'
+
 export default {
   mixins: [paymentMixin],
   methods: {
@@ -40,10 +40,24 @@ export default {
     handlePayment () {
       this.loading_payment = true
       console.log(this.order)
-      scalapayOrderInit(this.order)
-        .then(response => console.log(response))
-        .catch(error => console.error(error))
-      // window.location = this.order.payment_source.approval_url
+
+      const myHeaders = new Headers()
+      myHeaders.append('Accept', 'application/json')
+      myHeaders.append('Content-Type', 'application/json')
+
+      const raw = JSON.stringify(this.order)
+
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+      fetch('https://scalapay.fas-rocca.agenziadigital.it/api/v1/order', requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error))
     }
   }
 }
