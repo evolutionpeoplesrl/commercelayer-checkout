@@ -462,6 +462,7 @@ const placeOrder = order => {
 const scalapayBackendBaseURL = 'https://scalapay.fas-rocca.agenziadigital.it/api/v1'
 
 const scalapayOrderInit = orderData => {
+  console.log(orderData)
   return apiClient
     .post(scalapayBackendBaseURL + '/order', orderData)
     .then(response => {
