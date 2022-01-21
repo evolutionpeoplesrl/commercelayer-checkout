@@ -166,6 +166,7 @@ export default {
 .sm-and-up {
   .payment-method-fields {
     padding: 2rem 2rem 1rem;
+    word-break: break-word;
   }
 }
 </style>

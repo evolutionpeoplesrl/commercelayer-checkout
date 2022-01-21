@@ -16,6 +16,7 @@
 
 <script>
 import { paymentMixin } from '@/mixins/paymentMixin'
+import Vue from 'vue';
 
 export default {
   mixins: [paymentMixin],
@@ -33,8 +34,16 @@ export default {
     },
     handlePaymentSourceError (error) {
       let scalapayError = document.getElementById('scalapay-payment-error')
-      console.log(error)
-      scalapayError.innerHTML = error.data.errors[0].detail
+      let errorMessage = document.createElement('div')
+      errorMessage.style.fontSize = '1rem'
+      errorMessage.style.color = 'red'
+      errorMessage.innerText = this.$t('errors.processing_payment')
+      scalapayError.append(errorMessage)
+      let errorDetails = document.createElement('div')
+      errorDetails.style.fontSize = '11px'
+      errorDetails.style.fontFamily = 'monospace'
+      errorDetails.innerHTML = error.data.errors[0].detail
+      scalapayError.append(errorDetails)
       this.loading_payment = false
     },
     handlePayment () {
@@ -76,5 +85,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 </style>
