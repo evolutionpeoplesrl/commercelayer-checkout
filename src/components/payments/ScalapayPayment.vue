@@ -56,7 +56,19 @@ export default {
 
       fetch('https://scalapay.fas-rocca.agenziadigital.it/api/v1/order', requestOptions)
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => {
+          console.log(json)
+          if (Object.hasOwnProperty('error')) {
+            let errorObj = {}
+            errorObj.data = {}
+            errorObj.data.errors = [
+              {
+                'detail': json.error.message
+              }
+            ]
+            this.handlePaymentSourceError(errorObj)
+          }
+        })
         .catch(error => console.log('error', error))
     }
   }
