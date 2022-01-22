@@ -16,7 +16,8 @@
 
 <script>
 import { paymentMixin } from '@/mixins/paymentMixin'
-import Vue from 'vue';
+
+const scalapayBackendBaseUrl = 'https://scalapay.fas-rocca.agenziadigital.it/api/v1'
 
 export default {
   mixins: [paymentMixin],
@@ -35,7 +36,7 @@ export default {
     handlePaymentSourceError (error) {
       let scalapayError = document.getElementById('scalapay-payment-error')
       let errorMessage = document.createElement('div')
-      errorMessage.style.fontSize = '1rem'
+      errorMessage.style.fontSize = '13px'
       errorMessage.style.color = 'red'
       errorMessage.innerText = this.$t('errors.processing_payment')
       scalapayError.append(errorMessage)
@@ -50,23 +51,22 @@ export default {
       this.loading_payment = true
       console.log(this.order)
 
-      const myHeaders = new Headers()
-      myHeaders.append('Accept', 'application/json')
-      myHeaders.append('Content-Type', 'application/json')
+      const fetchHeaders = new Headers()
+      fetchHeaders.append('Accept', 'application/json')
+      fetchHeaders.append('Content-Type', 'application/json')
 
       const raw = JSON.stringify(this.order)
 
       const requestOptions = {
         method: 'POST',
-        headers: myHeaders,
+        headers: fetchHeaders,
         body: raw,
         redirect: 'follow'
       }
 
-      fetch('https://scalapay.fas-rocca.agenziadigital.it/api/v1/order', requestOptions)
+      fetch(scalapayBackendBaseUrl + '/order', requestOptions)
         .then(res => res.json())
         .then(json => {
-          console.log(json, json.hasOwnProperty('error'))
           if (json.hasOwnProperty('error')) {
             let errorObj = {}
             errorObj.data = {}
@@ -75,7 +75,6 @@ export default {
                 'detail': json.error.message
               }
             ]
-            console.log(errorObj)
             this.handlePaymentSourceError(errorObj)
           }
         })
