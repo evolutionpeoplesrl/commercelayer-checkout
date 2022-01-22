@@ -15,7 +15,7 @@
     "not_authorized": "Your card was declined",
     "out_of_stock": "Some items have gone out of stock",
     "too_short": "This coupon code is too short",
-    "processing_payment": "Something went wrong processing your request.<br/>Please report the details below to the admins"
+    "processing_payment": "Something went wrong processing your request. Please report the details below to the admins"
   },
   "generic": {
     "billing_address": "Billing address",

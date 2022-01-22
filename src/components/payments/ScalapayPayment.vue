@@ -32,6 +32,8 @@ export default {
       btn.onclick = () => {
         this.handlePayment()
       }
+      let scalapayError = document.getElementById('scalapay-payment-error')
+      scalapayError.innerHTML = ''
     },
     handlePaymentSourceError (error) {
       let scalapayError = document.getElementById('scalapay-payment-error')
