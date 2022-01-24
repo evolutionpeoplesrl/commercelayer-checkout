@@ -78,7 +78,10 @@ export default {
               }
             ]
             this.handlePaymentSourceError(errorObj)
+            return
           }
+
+          console.log(json)
         })
         .catch(error => console.log('error', error))
     }
