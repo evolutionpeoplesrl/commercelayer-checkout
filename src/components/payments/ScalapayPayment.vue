@@ -51,7 +51,7 @@ export default {
     },
     handlePayment () {
       this.loading_payment = true
-      this.$store.dispatch('placeOrder')
+      this.$store.dispatch('placeOrder', this.order)
       /* console.log(this.order)
 
       const fetchHeaders = new Headers()
