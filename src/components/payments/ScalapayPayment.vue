@@ -51,7 +51,8 @@ export default {
     },
     handlePayment () {
       this.loading_payment = true
-      console.log(this.order)
+      this.$store.dispatch('placeOrder')
+      /* console.log(this.order)
 
       const fetchHeaders = new Headers()
       fetchHeaders.append('Accept', 'application/json')
@@ -83,7 +84,7 @@ export default {
 
           console.log(json)
         })
-        .catch(error => console.log('error', error))
+        .catch(error => console.log('error', error)) */
     }
   }
 }
