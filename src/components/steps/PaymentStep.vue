@@ -106,7 +106,7 @@ export default {
             })
             break
           case 'external_payments':
-            if (this.order.included[0].attributes.total_amount_float <= 2000) {
+            if (this.order.total_amount_with_taxes_float <= 2000) {
               paymentOptions.push({
                 payment_method: paymentMethod,
                 component: 'ScalapayPayment',
