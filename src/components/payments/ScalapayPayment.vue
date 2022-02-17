@@ -72,7 +72,7 @@ export default {
     handlePayment () {
       this.loading_payment = true
       // this.$store.dispatch('placeOrder', this.order)
-      scalapayInit().then(resp => {
+      scalapayInit(this.order).then(resp => {
         console.log(resp)
       })
       /* console.log(this.order)
