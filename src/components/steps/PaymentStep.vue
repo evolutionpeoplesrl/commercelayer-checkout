@@ -106,11 +106,13 @@ export default {
             })
             break
           case 'external_payments':
-            paymentOptions.push({
-              payment_method: paymentMethod,
-              component: 'ScalapayPayment',
-              priority: 2
-            })
+            if (this.order.included[0].attributes.total_amount_float <= 2000) {
+              paymentOptions.push({
+                payment_method: paymentMethod,
+                component: 'ScalapayPayment',
+                priority: 2
+              })
+            }
             break
           case 'wire_transfers':
             paymentOptions.push({
