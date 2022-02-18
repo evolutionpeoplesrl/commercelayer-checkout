@@ -73,7 +73,20 @@ export default {
       this.loading_payment = true
       // this.$store.dispatch('placeOrder', this.order)
       scalapayInit(this.order).then(resp => {
-        console.log(resp)
+        if (resp.hasOwnProperty('error')) {
+          let errorObj = {}
+          errorObj.data = {}
+          errorObj.data.errors = [
+            {
+              'detail': resp.error
+            }
+          ]
+          this.handlePaymentSourceError(errorObj)
+          return
+        }
+
+        console.log('scalapay order created, redirecting to checkout url in 2s...')
+        setTimeout(() => window.location.replace(resp.checkoutUrl), 2000)
       })
       /* console.log(this.order)
 
