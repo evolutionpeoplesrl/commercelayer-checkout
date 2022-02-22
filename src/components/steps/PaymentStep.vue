@@ -7,7 +7,7 @@
       <template v-else>
         {{ $t('steps.payment.title') | capitalize }}
       </template>
-      <small v-html="$t('steps.payment.hint')"></small>
+      <small class="payment-hint" v-html="$t('steps.payment.hint')"></small>
     </v-stepper-step>
     <v-stepper-content :step="step">
       <v-radio-group v-model="selected_payment_option_component">
@@ -184,5 +184,9 @@ export default {
 .v-radio .v-label {
   font-weight: bold;
   color: black;
+}
+
+.payment-hint {
+  font-size: 14px;
 }
 </style>

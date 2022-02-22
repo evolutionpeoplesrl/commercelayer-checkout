@@ -69,7 +69,7 @@
     },
     "scalapay": {
       "title": "scalapay",
-      "hint": "L'innovativo metodo di finanziamento per acquistare subito quello che vuoi e pagarlo in 3 comode rate dello stesso importo, senza interessi. Accetta i \"Termini\" e Clicca su \"<strong>CONFERMA ORDINE</strong>\" sarai indirizzato verso il sito di Scalapay."
+      "hint": "L'innovativo metodo di finanziamento per acquistare subito quello che vuoi e pagarlo in 3 comode rate dello stesso importo, senza interessi. Accetta i \"<a href=\"https://www.rocca1794.com/it/guida-all-acquisto-online/\" target=\"_blank\">Termini</a>\" e Clicca su \"<strong>CONFERMA ORDINE</strong>\" sarai indirizzato verso il sito di Scalapay."
     },
     "stripe": {
       "title": "carta di credito"

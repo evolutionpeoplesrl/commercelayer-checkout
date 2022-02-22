@@ -24,17 +24,17 @@ import { collectBrowserInfo } from '@/utils/functions'
 
 export default {
   computed: {
-    scriptSrc() {
+    scriptSrc () {
       return `https://checkoutshopper-${
         process.env.VUE_APP_ADYEN_ENV
       }.adyen.com/checkoutshopper/sdk/5.2.0/adyen.js`
     },
-    styleHref() {
+    styleHref () {
       return `https://checkoutshopper-${
         process.env.VUE_APP_ADYEN_ENV
       }.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css`
     },
-    styleObj() {
+    styleObj () {
       return {
         base: {
           fontSize: '16px',
@@ -45,7 +45,7 @@ export default {
         }
       }
     },
-    checkoutConfig() {
+    checkoutConfig () {
       return {
         locale: this.$i18n.locale,
         environment: process.env.VUE_APP_ADYEN_ENV,
@@ -58,7 +58,7 @@ export default {
   },
   mixins: [paymentMixin],
   methods: {
-    setupPayment() {
+    setupPayment () {
       let script = this.getScript(this.scriptSrc)
       script.addEventListener('load', async () => {
         // eslint-disable-next-line
@@ -79,7 +79,7 @@ export default {
         }
       })
     },
-    handleOnChange(state, component) {
+    handleOnChange (state, component) {
       if (state.isValid) {
         let browserInfo = collectBrowserInfo()
 
@@ -104,7 +104,7 @@ export default {
         })
       }
     },
-    handleOnAdditionalDetails(state, component) {
+    handleOnAdditionalDetails (state, component) {
       this.$store
         .dispatch('updateOrderPaymentSource', {
           payment_request_details: state.data,
@@ -116,7 +116,7 @@ export default {
           this.handlePaymentResponse(paymentSource.payment_response, checkout)
         })
     },
-    handlePayment(checkout) {
+    handlePayment (checkout) {
       this.loading_payment = true
       this.$store
         .dispatch('updateOrderPaymentSource', {
@@ -126,7 +126,7 @@ export default {
           this.handlePaymentResponse(paymentSource.payment_response, checkout)
         })
     },
-    handlePaymentResponse(paymentResponse, checkout) {
+    handlePaymentResponse (paymentResponse, checkout) {
       if (paymentResponse.action !== undefined) {
         // https://docs.adyen.com/checkout/components-web#step-4-additional-front-end
         checkout.createFromAction(paymentResponse.action).mount('#adyen-action')
@@ -147,7 +147,7 @@ export default {
         }
       }
     },
-    checkStyle() {
+    checkStyle () {
       let links = document.getElementsByTagName('link')
       for (let i = 0; i < links.length; i++) {
         if (links[i].href === this.styleHref) return true
@@ -155,7 +155,7 @@ export default {
       return false
     }
   },
-  mounted() {
+  mounted () {
     // Add Adyen.css to document head
     if (!this.checkStyle()) {
       let style = document.createElement('link')
@@ -190,5 +190,6 @@ export default {
 }
 .adyen-logo {
   height: 20px;
+  margin-left: 1rem;
 }
 </style>
