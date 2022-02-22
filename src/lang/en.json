@@ -67,6 +67,10 @@
       "title": "paypal",
       "hint": "by placing the order, you will be redirected to the PayPal website to sign in and authorize the payment"
     },
+    "scalapay": {
+      "title": "scalapay",
+      "hint": "Receive your order immediately and pay in 3 installments, without interest with Scalapay - powered by Stripe. You will be redirected to the Scalapay website to complete the order. Available using credit cards, debit cards and prepaid cards."
+    },
     "stripe": {
       "title": "credit card"
     },

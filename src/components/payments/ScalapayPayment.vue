@@ -1,12 +1,15 @@
 <template>
   <div class="payment-method">
     <v-radio
-      :label="inputLabel('scalapay')"
       :value="payment_option.component"
       color="primary"
       @change="setPaymentMethod"
       id="paypal-payments-radio"
-    ></v-radio>
+    >
+      <template v-slot:label>
+        <span class="scalapay-method"><img src="/scalapay-logo.png" alt="Scalapay"><span>Paga in 3 rate</span></span>
+      </template>
+    </v-radio>
     <div class="payment-method-fields" v-show="selected">
       <div id="scalapay-payment-hint" v-html="$t('payment_methods.scalapay.hint')"></div>
       <div class="payment-error" id="scalapay-payment-error"></div>
@@ -93,5 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.scalapay-method {
+  display: flex;
+}
 </style>
