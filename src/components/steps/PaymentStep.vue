@@ -1,7 +1,12 @@
 <template>
   <div class="step-wrapper">
     <v-stepper-step :step="step">
-      {{ $t('steps.payment.title') | capitalize }}
+      <template v-if="$t('steps.payment.title') === 'scalapay'">
+        <span class="scalapay-method"><img src="/scalapay-logo.png" alt="Scalapay"><span>Paga in 3 rate</span></span>
+      </template>
+      <template v-else>
+        {{ $t('steps.payment.title') | capitalize }}
+      </template>
       <small>{{ $t('steps.payment.hint') | capitalize }}</small>
     </v-stepper-step>
     <v-stepper-content :step="step">
@@ -170,5 +175,9 @@ export default {
     padding: 2rem 2rem 1rem;
     word-break: break-word;
   }
+}
+
+.scalapay-method {
+  display: flex;
 }
 </style>
