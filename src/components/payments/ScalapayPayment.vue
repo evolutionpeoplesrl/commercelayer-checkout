@@ -8,7 +8,7 @@
       id="paypal-payments-radio"
     ></v-radio>
     <div class="payment-method-fields" v-show="selected">
-      <div id="scalapay-payment-hint">{{ $t('payment_methods.scalapay.hint') | capitalize }}</div>
+      <div id="scalapay-payment-hint" v-html="$t('payment_methods.scalapay.hint')"></div>
       <div class="payment-error" id="scalapay-payment-error"></div>
     </div>
   </div>
@@ -71,7 +71,6 @@ export default {
     },
     handlePayment () {
       this.loading_payment = true
-      // this.$store.dispatch('placeOrder', this.order)
       scalapayInit(this.order).then(resp => {
         if (resp.hasOwnProperty('error')) {
           let errorObj = {}
@@ -88,39 +87,6 @@ export default {
         console.log('scalapay order created, redirecting to checkout url in 2s...')
         setTimeout(() => window.location.replace(resp.checkoutUrl), 2000)
       })
-      /* console.log(this.order)
-
-      const fetchHeaders = new Headers()
-      fetchHeaders.append('Accept', 'application/json')
-      fetchHeaders.append('Content-Type', 'application/json')
-
-      const raw = JSON.stringify(this.order)
-
-      const requestOptions = {
-        method: 'POST',
-        headers: fetchHeaders,
-        body: raw,
-        redirect: 'follow'
-      }
-
-      fetch(scalapayBackendBaseUrl + '/order', requestOptions)
-        .then(res => res.json())
-        .then(json => {
-          if (json.hasOwnProperty('error')) {
-            let errorObj = {}
-            errorObj.data = {}
-            errorObj.data.errors = [
-              {
-                'detail': json.error.message
-              }
-            ]
-            this.handlePaymentSourceError(errorObj)
-            return
-          }
-
-          console.log(json)
-        })
-        .catch(error => console.log('error', error)) */
     }
   }
 }
