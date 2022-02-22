@@ -115,5 +115,9 @@ export default {
 }
 #scalapay-payment-hint {
   font-size: 14px;
+
+  a {
+    text-decoration: underline;
+  }
 }
 </style>
