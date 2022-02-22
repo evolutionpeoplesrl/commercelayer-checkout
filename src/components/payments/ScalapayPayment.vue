@@ -7,7 +7,7 @@
       id="paypal-payments-radio"
     >
       <template v-slot:label>
-        <span class="scalapay-method"><img src="/scalapay-logo.png" alt="Scalapay"><span>Paga in 3 rate</span></span>
+        <span class="scalapay-method"><img class="scalapay-logo" src="/scalapay-logo.png" alt="Scalapay"><span class="scalapay-desc">Paga in 3 rate</span></span>
       </template>
     </v-radio>
     <div class="payment-method-fields" v-show="selected">
@@ -98,5 +98,19 @@ export default {
 <style lang="scss">
 .scalapay-method {
   display: flex;
+  align-items: center;
+}
+.scalapay-logo {
+  height: 22px;
+}
+.scalapay-desc {
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
+  background: #4b3401;
+  color: white;
+  padding: 0 10px;
+  border-radius: 3px;
 }
 </style>
