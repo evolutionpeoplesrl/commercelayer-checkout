@@ -113,4 +113,7 @@ export default {
   padding: 0 10px;
   border-radius: 3px;
 }
+#scalapay-payment-hint {
+  font-size: 14px;
+}
 </style>

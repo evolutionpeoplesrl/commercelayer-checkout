@@ -55,4 +55,7 @@ export default {
 .paypal-logo {
   height: 20px;
 }
+#paypal-payment-hint {
+  font-size: 14px;
+}
 </style>
