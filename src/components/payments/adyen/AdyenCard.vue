@@ -1,12 +1,15 @@
 <template>
   <div class="payment-method">
     <v-radio
-      :label="inputLabel('adyen')"
       :value="payment_option.component"
       color="primary"
       @change="setPaymentMethod"
       id="adyen-card-radio"
-    ></v-radio>
+    >
+      <template v-slot:label>
+        <span class="adyen-method"><span class="adyen-desc">{{ inputLabel('adyen') }}</span><img class="adyen-logo" src="/credit-cards-logo.png" alt="Adyen"></span>
+      </template>
+    </v-radio>
     <div class="payment-method-fields" v-show="selected">
       <div id="adyen-card"></div>
       <div class="payment-error" id="adyen-card-error"></div>
@@ -179,5 +182,13 @@ export default {
   iframe[name='threeDSIframe'] {
     padding: 2rem;
   }
+}
+
+.adyen-method {
+  display: flex;
+  align-items: center;
+}
+.adyen-logo {
+  height: 20px;
 }
 </style>

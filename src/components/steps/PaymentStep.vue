@@ -180,4 +180,9 @@ export default {
 .scalapay-method {
   display: flex;
 }
+
+.v-radio .v-label {
+  font-weight: bold;
+  color: black;
+}
 </style>

@@ -53,6 +53,6 @@ export default {
   align-items: center;
 }
 .paypal-logo {
-  height: 22px;
+  height: 20px;
 }
 </style>
