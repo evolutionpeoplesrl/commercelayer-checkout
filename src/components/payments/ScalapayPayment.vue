@@ -20,7 +20,7 @@
 <script>
 import { paymentMixin } from '@/mixins/paymentMixin'
 
-const backendInitUrl = 'https://scalapay.fas-rocca.agenziadigital.it/api/v1/order/init'
+const backendInitUrl = 'https://scalapay.rocca1794.com/api/v1/order/init'
 
 async function scalapayInit (orderPayload) {
   const myHeaders = new Headers()
