@@ -14,7 +14,8 @@
     "invalid_gift_card_or_coupon": "Questo codice non è valido",
     "not_authorized": "La tua carta non è stata autorizzata",
     "out_of_stock": "Alcuni articoli non sono più disponibili",
-    "too_short": "Questo codice coupon è troppo corto"
+    "too_short": "Questo codice coupon è troppo corto",
+    "processing_payment": "Si è verificato un problema. Ti preghiamo di notificarci l'errore riportato qui sotto se possibile"
   },
   "generic": {
     "billing_address": "Indirizzo di fatturazione",
@@ -65,6 +66,10 @@
     "paypal": {
       "title": "paypal",
       "hint": "confermando l'ordine, verrai rimandato sul sito di PayPal per effettuare l'accesso e autorizzare il pagamento"
+    },
+    "scalapay": {
+      "title": "scalapay",
+      "hint": "L'innovativo metodo di finanziamento per acquistare subito quello che vuoi e pagarlo in 3 comode rate dello stesso importo, senza interessi. Accetta i \"<a href=\"https://www.rocca1794.com/it/guida-all-acquisto-online/\" target=\"_blank\">Termini</a>\" e Clicca su \"<strong>CONFERMA ORDINE</strong>\" sarai indirizzato verso il sito di Scalapay."
     },
     "stripe": {
       "title": "carta di credito"

@@ -14,7 +14,8 @@
     "invalid_gift_card_or_coupon": "This code is not valid",
     "not_authorized": "Your card was declined",
     "out_of_stock": "Some items have gone out of stock",
-    "too_short": "This coupon code is too short"
+    "too_short": "This coupon code is too short",
+    "processing_payment": "Something went wrong processing your request. Please report the details below to the admins"
   },
   "generic": {
     "billing_address": "Billing address",
@@ -65,6 +66,10 @@
     "paypal": {
       "title": "paypal",
       "hint": "by placing the order, you will be redirected to the PayPal website to sign in and authorize the payment"
+    },
+    "scalapay": {
+      "title": "scalapay",
+      "hint": "Receive your order immediately and pay in 3 installments, without interest with Scalapay - powered by Stripe. You will be redirected to the Scalapay website to complete the order. Available using credit cards, debit cards and prepaid cards."
     },
     "stripe": {
       "title": "credit card"

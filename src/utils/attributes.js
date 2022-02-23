@@ -159,6 +159,7 @@ export const paymentSourceAttributesMap = {
   adyen_payments: ['id', 'payment_methods', 'payment_response'],
   braintree_payments: ['id', 'client_token'],
   paypal_payments: ['id', 'approval_url'],
+  external_payments: ['id'],
   wire_transfers: ['id']
 }
 

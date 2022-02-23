@@ -1,12 +1,15 @@
 <template>
   <div class="payment-method">
     <v-radio
-      :label="inputLabel('paypal')"
       :value="payment_option.component"
       color="primary"
       @change="setPaymentMethod"
       id="paypal-payments-radio"
-    ></v-radio>
+    >
+      <template v-slot:label>
+        <span class="paypal-method"><img class="paypal-logo" src="/paypal-logo.svg" alt="PayPal"></span>
+      </template>
+    </v-radio>
     <div class="payment-method-fields" v-show="selected">
       <div id="paypal-payment-hint">{{ $t('payment_methods.paypal.hint') | capitalize }}</div>
       <div class="payment-error" id="paypal-payment-error"></div>
@@ -44,5 +47,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.paypal-method {
+  display: flex;
+  align-items: center;
+}
+.paypal-logo {
+  height: 20px;
+}
+#paypal-payment-hint {
+  font-size: 14px;
+}
 </style>

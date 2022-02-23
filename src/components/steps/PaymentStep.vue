@@ -1,8 +1,13 @@
 <template>
   <div class="step-wrapper">
     <v-stepper-step :step="step">
-      {{ $t('steps.payment.title') | capitalize }}
-      <small>{{ $t('steps.payment.hint') | capitalize }}</small>
+      <template v-if="$t('steps.payment.title') === 'scalapay'">
+        <span class="scalapay-method"><img src="/scalapay-logo.png" alt="Scalapay"><span>Paga in 3 rate</span></span>
+      </template>
+      <template v-else>
+        {{ $t('steps.payment.title') | capitalize }}
+      </template>
+      <small class="payment-hint" v-html="$t('steps.payment.hint')"></small>
     </v-stepper-step>
     <v-stepper-content :step="step">
       <v-radio-group v-model="selected_payment_option_component">
@@ -45,6 +50,7 @@ import AdyenCard from '@/components/payments/adyen/AdyenCard'
 import BraintreeCard from '@/components/payments/braintree/BraintreeCard'
 import StripeCard from '@/components/payments/stripe/StripeCard'
 import PaypalPayment from '@/components/payments/PaypalPayment'
+import ScalapayPayment from '@/components/payments/ScalapayPayment'
 import WireTransfer from '@/components/payments/WireTransfer'
 
 export default {
@@ -53,6 +59,7 @@ export default {
     BraintreeCard,
     StripeCard,
     PaypalPayment,
+    ScalapayPayment,
     WireTransfer
   },
   mixins: [stepMixin],
@@ -62,6 +69,7 @@ export default {
     },
     availablePaymentOptions () {
       let paymentOptions = []
+      console.log(this.order)
       _.each(this.order.available_payment_methods, paymentMethod => {
         switch (paymentMethod.payment_source_type) {
           case 'adyen_payments':
@@ -101,6 +109,15 @@ export default {
               component: 'PaypalPayment',
               priority: 2
             })
+            break
+          case 'external_payments':
+            if (this.order.total_amount_with_taxes_float <= 2000) {
+              paymentOptions.push({
+                payment_method: paymentMethod,
+                component: 'ScalapayPayment',
+                priority: 2
+              })
+            }
             break
           case 'wire_transfers':
             paymentOptions.push({
@@ -156,6 +173,20 @@ export default {
 .sm-and-up {
   .payment-method-fields {
     padding: 2rem 2rem 1rem;
+    word-break: break-word;
   }
+}
+
+.scalapay-method {
+  display: flex;
+}
+
+.v-radio .v-label {
+  font-weight: bold;
+  color: black;
+}
+
+.payment-hint {
+  font-size: 14px;
 }
 </style>
