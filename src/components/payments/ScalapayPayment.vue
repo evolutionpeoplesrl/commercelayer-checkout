@@ -21,11 +21,13 @@
 import { paymentMixin } from '@/mixins/paymentMixin'
 
 const backendInitUrl = 'https://scalapay.fas-rocca.agenziadigital.it/api/v1/order/init'
+const clCorsHeaderPrefix = 'LzqXEib3TeqSqT'
 
 async function scalapayInit (orderPayload) {
   const myHeaders = new Headers()
   myHeaders.append('Accept', 'application/json')
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('X-CommerceLayer-Checkout', clCorsHeaderPrefix + btoa(window.location.hostname))
 
   const raw = JSON.stringify(orderPayload)
 
